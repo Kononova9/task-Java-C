@@ -1,89 +1,39 @@
-// В массиве найти сумму элементов до первого отрицательного
-              
-int[] ints = { 1, 2, 3, 5, 6, 7, 8, -1, 23, 435, 346, 45 };
-int sum = 0;
-for (inti = 0; i<ints.Length; i++)
-            {
-if (ints[i] < 0)
-                {
-break;
-                }
-                sum += ints[i];
-            }
-Console.WriteLine(sum);
-Console.ReadKey();
+//РќР°С…РѕР¶РґРµРЅРёРµ СЃСѓРјРјС‹ Рё РїСЂРѕРёР·РІРµРґРµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° РёР· n РІРµС‰РµСЃС‚РІРµРЅРЅС‹С… С‡РёСЃРµР»
 
-//в масиве найти мин и макс элементы и поменять их местами
-int[] ints = { 1, 2, 3, 4, -2, 4, 2, 34, 4 };
-
-intindexMin = 0;
-//Переменная отвечающая за максимальный элемент массива
-intindexMax = 0;
-foreach (var item inints)
-            {
-Console.Write($"{item}\t");
-            }
-for (inti = 0; i<ints.Length; i++)
-            {
-if (ints[i] <ints[indexMin])
-                {
-indexMin = i;
-                }
-if (ints[i] >ints[indexMax])
-                {
-indexMax = i;
-                }
-            }
-Console.OutputEncoding = Encoding.UTF8;
-Console.WriteLine();
-Console.WriteLine($"Минимальныйэлементимеетиндекс - {indexMin}");
-Console.WriteLine($"Максимальныйэлементимеетиндекс - {indexMax}");
-//
-inttmp = ints[indexMin];
-ints[indexMin] = ints[indexMax];
-ints[indexMax] = tmp;
-//
-foreach (var item inints)
-            {
-Console.Write($"{item}\t");
-            }
-Console.ReadKey();
-//Нахождение суммы и произведения элементов массива из n вещественных чисел
-Console.WriteLine("Введите размерность массива");
+Console.WriteLine("Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂРЅРѕСЃС‚СЊ РјР°СЃСЃРёРІР°");
 int n = int.Parse(Console.ReadLine());
 float[] Array = newfloat[n];
-//заполнениемассива
-            Random random = newRandom();
+
+//Р·Р°РїРѕР»РЅРµРЅРёРµРјР°СЃСЃРёРІР°
+
+Random random = newRandom();
 for (inti = 0; i<Array.Length; i++)
-            {
-                Array[i] = random.Next(0, 10);
-            }
-//рассчеты
+{
+  Array[i] = random.Next(0, 10);
+ }
+ 
+//СЂР°СЃСЃС‡РµС‚С‹
+
 float Sum = 0;
 floatProiz = 1;
 for (inti = 0; i<Array.Length; i++)
-            {
-                Sum = Sum + Array[i];
+
+{
+Sum = Sum + Array[i];
 Proiz = Proiz * Array[i];
-            }
-Console.WriteLine("Суммаэлементовмассиваравна {0}", Sum);
-Console.WriteLine("Произведение элементов массива равно {0}", Proiz);
-Console.WriteLine("Исходныймассив");
+ }
+ 
+Console.WriteLine("РЎСѓРјРјР°СЌР»РµРјРµРЅС‚РѕРІРјР°СЃСЃРёРІР°СЂР°РІРЅР° {0}", Sum);
+Console.WriteLine("РџСЂРѕРёР·РІРµРґРµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° СЂР°РІРЅРѕ {0}", Proiz);
+Console.WriteLine("РСЃС…РѕРґРЅС‹Р№РјР°СЃСЃРёРІ");
 for (inti = 0; i<Array.Length; i++)
-            {
+
+{
 Console.Write("{0}\t", Array[i]);
 }
-Console.ReadKey();
-Задача 4. Задан массив действительных чисел из N элементов. Определить количество
-элементов, значения которых находятся в диапазоне от -500 до +500. Решите задачу
-двумя способами: заполнение массива случайными числами или заполнение с
-клавиатуры.
- 
- 
 
- 
- 
-Даны два числа. Вывести вначале большее, а затем меньшее из них
+Console.ReadKey();
+
  
  
 
