@@ -29,7 +29,7 @@ Console.Write("{0}\t", Array[i]);
 Console.ReadKey();
 
 
-//Task2
+//Task 2
 
 //в масиве найти мин и макс элементы и поменять их местами
 int[] ints = { 1, 2, 3, 4, -2, 4, 2, 34, 4 };
@@ -61,6 +61,71 @@ foreach (var item inints)
 Console.Write($"{item}\t");
 }
 Console.ReadKey();
+
+
+//Task 3
+
+//Найти сумму последовательности элементов, которые вводит пользователь с клавиатуры.
+//конец последовательности это 0.
+
+intinput;
+intsum = 0;
+
+Console.OutputEncoding = Encoding.UTF8;
+Console.WriteLine("Введитечисло");
+
+input = Convert.ToInt32(Console.ReadLine());
+
+while (true)
+{
+if (input == 0)
+{
+break;
+}
+sum += input;
+Console.WriteLine("Введите число");
+input = Convert.ToInt32(Console.ReadLine());
+}
+Console.WriteLine(sum);
+Console.ReadKey();
+
+
+//Task 4
+
+//Найти сумму последовательности элементов, которые вводит пользователь с клавиатуры.
+//конец последовательности это 0.
+
+intinput;
+intsum = 0;
+
+Console.OutputEncoding = Encoding.UTF8;
+do
+{
+Console.WriteLine("Введите число");
+input = Convert.ToInt32(Console.ReadLine());
+sum += input;
+} 
+while (input != 0);
+Console.WriteLine(sum);
+Console.ReadKey();
+
+
+//Task 5
+// В массиве найти сумму элементов до первого отрицательного
+
+int[] ints = { 1, 2, 3, 5, 6, 7, 8, -1, 23, 435, 346, 45 };
+int sum = 0;
+for (inti = 0; i<ints.Length; i++)
+{
+if (ints[i] < 0)
+{
+break;
+}
+sum += ints[i];
+}
+Console.WriteLine(sum);
+Console.ReadKey();
+
 
  
  
