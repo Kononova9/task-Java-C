@@ -1,37 +1,65 @@
+//Task 1
+
 //Нахождение суммы и произведения элементов массива из n вещественных чисел
 
 Console.WriteLine("Введите размерность массива");
 int n = int.Parse(Console.ReadLine());
 float[] Array = newfloat[n];
 
-//заполнениемассива
-
 Random random = newRandom();
 for (inti = 0; i<Array.Length; i++)
 {
   Array[i] = random.Next(0, 10);
- }
+}
  
-//рассчеты
-
 float Sum = 0;
 floatProiz = 1;
 for (inti = 0; i<Array.Length; i++)
-
 {
 Sum = Sum + Array[i];
 Proiz = Proiz * Array[i];
- }
- 
+}
 Console.WriteLine("Суммаэлементовмассиваравна {0}", Sum);
 Console.WriteLine("Произведение элементов массива равно {0}", Proiz);
 Console.WriteLine("Исходныймассив");
 for (inti = 0; i<Array.Length; i++)
-
 {
 Console.Write("{0}\t", Array[i]);
 }
+Console.ReadKey();
 
+
+//Task2
+
+//в масиве найти мин и макс элементы и поменять их местами
+int[] ints = { 1, 2, 3, 4, -2, 4, 2, 34, 4 };
+
+intindexMin = 0;
+intindexMax = 0;
+foreach (var item inints)
+{
+Console.Write($"{item}\t");
+}
+for (inti = 0; i<ints.Length; i++)
+{
+if (ints[i] <ints[indexMin])
+{
+indexMin = i;
+}
+if (ints[i] >ints[indexMax])
+{
+indexMax = i;
+}
+}
+Console.OutputEncoding = Encoding.UTF8;
+Console.WriteLine();
+Console.WriteLine($"Минимальный элемент имеет индекс - {indexMin}");
+Console.WriteLine($"Максимальный элемент имеет индекс - {indexMax}");
+
+foreach (var item inints)
+{
+Console.Write($"{item}\t");
+}
 Console.ReadKey();
 
  
