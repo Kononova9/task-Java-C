@@ -1,261 +1,219 @@
-"This task"
+
 // Task 1
 
 import java.util.*;
 
 public class Main {
     
-    public static void printFibonacciClassic(int n) {
+public static void printFibonacciClassic(int n) {
       
-      int f1 = 1;
-      int f2 = 1;
+int f1 = 1;
+int f2 = 1;
       
-      if(n <= 0) {
-        System.out.println("Последовательности не существует!!!");
-      }
+if(n <= 0) {
+System.out.println("Последовательности не существует!!!");
+}
+if(n == 1) {
+System.out.print("1 ");
+}
+if(n >= 2) {
+System.out.print("1 1 ");
+}
+for(int i = 3; i <= n; i++) {
+int fk = f1 + f2;
+System.out.print(fk + " ");
+f1 = f2;
+f2 = fk;
+}
+System.out.println();
+}
+public static int findFibonacciRecursion(int n) {
       
-      if(n == 1) {
-        System.out.print("1 ");
-      }
-      
-      if(n >= 2) {
-        System.out.print("1 1 ");
-      }
-      
-      for(int i = 3; i <= n; i++) {
-        
-        int fk = f1 + f2;
-        System.out.print(fk + " ");
-        f1 = f2;
-        f2 = fk;
-      }
-      
-      System.out.println();
-    }
+if((n == 1) || (n == 2))
+return 1;
+else
+return findFibonacciRecursion(n - 1) + findFibonacciRecursion(n - 2);
+}
+public static void printFibonacciRecursion(int n) {
+
+for(int i = 1; i <= n; i++) {
+System.out.print(findFibonacciRecursion(i) + " ");
+}
+System.out.println();
+}
     
-    public static int findFibonacciRecursion(int n) {
+public static void main(String[] args) {
       
-      if((n == 1) || (n == 2))
-        return 1;
-      else
-        return findFibonacciRecursion(n - 1) + findFibonacciRecursion(n - 2);
-    }
-    
-    public static void printFibonacciRecursion(int n) {
-      for(int i = 1; i <= n; i++) {
-        System.out.print(findFibonacciRecursion(i) + " ");
-      }
-      System.out.println();
-    }
-    
-    
-    public static void main(String[] args) {
-      
-      printFibonacciClassic(13);
-      printFibonacciRecursion(13);
-  }
+printFibonacciClassic(13);
+printFibonacciRecursion(13);
+}
 }
 
+
 // Task 2
+
 import java.util.*;
 
 public class Main {
   
-    public static long factorialClassic(int n) {
+public static long factorialClassic(int n) {
+     
+if(n == 1)
+return 1;
+else {
+long result = 1;
+for(int i = 1; i <= n; i++) {
+result = result * i;  
+}
+return result;
+}
+}
+public static long factorialRecursion(int n) {
       
-      if(n == 1)
-        return 1;
-      else {
-        
-        long result = 1;
-        
-        for(int i = 1; i <= n; i++) {
-          result = result * i;  
-        }
-        
-        return result;
-      }
+if (n == 1) 
+return 1;
+else
+return n * factorialRecursion(n - 1);
+}
+public static void main(String[] args) {
       
-    }
-    
-    public static long factorialRecursion(int n) {
-      
-      if (n == 1) 
-        return 1;
-      else
-        return n * factorialRecursion(n - 1);
-      
-    }
-    
-    public static void main(String[] args) {
-      
-      System.out.println(factorialClassic(5));
-      System.out.println(factorialClassic(7));
-      System.out.println(factorialClassic(15));
-      
-      System.out.println(factorialRecursion(5));
-      System.out.println(factorialRecursion(7));
-      System.out.println(factorialRecursion(15));
-  }
+System.out.println(factorialClassic(5));
+System.out.println(factorialClassic(7));
+System.out.println(factorialClassic(15));
+System.out.println(factorialRecursion(5));
+System.out.println(factorialRecursion(7));
+System.out.println(factorialRecursion(15));
+}
 }
 
 
 // Task 3
+
 import java.util.*;
 import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
 
-  public static int[] swapElementsOfArray(int[] array, int n, int m) {
+public static int[] swapElementsOfArray(int[] array, int n, int m) {
 
-    int l = array.length;
+int l = array.length;
+if ((n < 0) || (m < 0) || (n >= l) || (m >= l)) {
+System.out.println("Элементы поменять нельзя!!!");
+return array;
+} else {
+int temp = array[n];
+array[n] = array[m];
+array[m] = temp;
+return array;
+}
+}
+public static void printArray(int[] array) {
 
-    if ((n < 0) || (m < 0) || (n >= l) || (m >= l)) {
-      System.out.println("Элементы поменять нельзя!!!");
-      return array;
-    } else {
-      int temp = array[n];
-      array[n] = array[m];
-      array[m] = temp;
+for (int i = 0; i < array.length; i++) {
+System.out.print(array[i] + " ");
+}
+System.out.println();
+}
+public static int[] scanArray(int n) {
 
-      return array;
-    }
-  }
+Scanner sc = new Scanner(System.in);
+int[] array = new int[n];
+for (int i = 0; i < array.length; i++) {
+array[i] = sc.nextInt();
+}
+return array;
+}
+public static int[] generateArray(int n) {
 
-  public static void printArray(int[] array) {
+Random r = new Random();
+int[] array = new int[n];
+for (int i = 0; i < array.length; i++) {
+array[i] = r.nextInt(100);
+}
+return array;
+}
+public static int[] multiplyByNumber(int[] array, int number) {
 
-    for (int i = 0; i < array.length; i++) {
-      System.out.print(array[i] + " ");
-    }
+System.out.println("Умножаем элементы массива на " + number);
+for (int i = 0; i < array.length; i++) {
+array[i] = array[i] * number;
+}
+return array;
+}
 
-    System.out.println();
-  }
+public static int[] decreaseByNumber(int[] array, int number) {
 
-  public static int[] scanArray(int n) {
+System.out.println("Вычитаем из элементов массива " + number);
+for (int i = 0; i < array.length; i++) {
+array[i] = array[i] - number;
+}
+return array;
+}
 
-    Scanner sc = new Scanner(System.in);
+public static int[] divideByFirstElement(int[] array) {
 
-    int[] array = new int[n];
+System.out.println("Делим на первый элемент");
+int temp = array[0];
+for (int i = 0; i < array.length; i++) {
+array[i] = array[i] / temp;
+}
+return array;
+}
 
-    for (int i = 0; i < array.length; i++) {
-      array[i] = sc.nextInt();
-    }
+public static void printNonNegativeElements(int[] array) {
 
-    return array;
-  }
+for (int i = 0; i < array.length; i++) {
+if (array[i] >= 0) {
+System.out.print(array[i] + " ");
+}
+}
+System.out.println();
+}
 
-  public static int[] generateArray(int n) {
+public static int findMaxElement(int[] array) {
 
-    Random r = new Random();
+int max = array[0];
+for (int i = 0; i < array.length; i++) {
+if (array[i] > max) {
+max = array[i];
+}
+}
+return max;
+}
 
-    int[] array = new int[n];
+public static int findIndexOfMaxElement(int[] array) {
 
-    for (int i = 0; i < array.length; i++) {
-      array[i] = r.nextInt(100);
-    }
+int index = 0;
+int max = findMaxElement(array);
+for (int i = 0; i < array.length; i++) {
+if (array[i] == max) {
+index = i;
+break;
+}
+}
+return index;
+}
 
-    return array;
-  }
+public static void main(String[] args) {
 
-  public static int[] multiplyByNumber(int[] array, int number) {
-
-    System.out.println("Умножаем элементы массива на " + number);
-
-    for (int i = 0; i < array.length; i++) {
-      array[i] = array[i] * number;
-    }
-
-    return array;
-  }
-
-  public static int[] decreaseByNumber(int[] array, int number) {
-
-    System.out.println("Вычитаем из элементов массива " + number);
-
-    for (int i = 0; i < array.length; i++) {
-      array[i] = array[i] - number;
-    }
-
-    return array;
-  }
-
-  public static int[] divideByFirstElement(int[] array) {
-
-    System.out.println("Делим на первый элемент");
-
-    int temp = array[0];
-
-    for (int i = 0; i < array.length; i++) {
-      array[i] = array[i] / temp;
-    }
-
-    return array;
-  }
-
-  public static void printNonNegativeElements(int[] array) {
-
-    for (int i = 0; i < array.length; i++) {
-      if (array[i] >= 0) {
-        System.out.print(array[i] + " ");
-      }
-    }
-
-    System.out.println();
-
-  }
-
-  public static int findMaxElement(int[] array) {
-
-    int max = array[0];
-
-    for (int i = 0; i < array.length; i++) {
-      if (array[i] > max) {
-        max = array[i];
-      }
-    }
-
-    return max;
-  }
-
-  public static int findIndexOfMaxElement(int[] array) {
-
-    int index = 0;
-
-    int max = findMaxElement(array);
-
-    for (int i = 0; i < array.length; i++) {
-      if (array[i] == max) {
-        index = i;
-        break;
-      }
-    }
-
-    return index;
-  }
-
-  public static void main(String[] args) {
-
-    int[] array = generateArray(10);
-    printArray(array);
-
-    swapElementsOfArray(array, 1, 6);
-    printArray(array);
-    swapElementsOfArray(array, 3, 7);
-    printArray(array);
-    swapElementsOfArray(array, 5, 5);
-    printArray(array);
-
-    swapElementsOfArray(array, 3, 10);
-    printArray(array);
-    swapElementsOfArray(array, 10, 7);
-    printArray(array);
-    swapElementsOfArray(array, -1, 7);
-    printArray(array);
-    swapElementsOfArray(array, 3, -2);
-    printArray(array);
-
-  }
+int[] array = generateArray(10);
+printArray(array);
+swapElementsOfArray(array, 1, 6);
+printArray(array);
+swapElementsOfArray(array, 3, 7);
+printArray(array);
+swapElementsOfArray(array, 5, 5);
+printArray(array);
+swapElementsOfArray(array, 3, 10);
+printArray(array);
+swapElementsOfArray(array, 10, 7);
+printArray(array);
+swapElementsOfArray(array, -1, 7);
+printArray(array);
+swapElementsOfArray(array, 3, -2);
+printArray(array);
+}
 }
 
 
@@ -267,25 +225,23 @@ import java.util.Arrays;
 
 public class Main {
 
-  public static void printArray(int[] array) {
+public static void printArray(int[] array) {
 
-    for (int i = 0; i < array.length; i++) {
-      System.out.print(array[i] + " ");
-    }
-
-    System.out.println();
-  }
-
-  public static void main(String[] args) {
-
-    int[] array = { 1, 5, 0, 6, 8, 2, 13, -6, 12 };
-    printArray(array);
-
-    // Сортировка массива
-    Arrays.sort(array);
-    printArray(array);
-  }
+for (int i = 0; i < array.length; i++) {
+System.out.print(array[i] + " ");
 }
+System.out.println();
+}
+
+public static void main(String[] args) {
+
+int[] array = { 1, 5, 0, 6, 8, 2, 13, -6, 12 };
+printArray(array);
+Arrays.sort(array);
+printArray(array);
+}
+}
+
 
 // Task 5
 
@@ -294,180 +250,170 @@ import java.util.ArrayList;
 
 public class Main {
 
-  public static void print(ArrayList<String> list) {
+public static void print(ArrayList<String> list) {
 
-    for (int i = 0; i < list.size(); i++) {
-      System.out.print(list.get(i) + " ; ");
-    }
-    System.out.println();
-  }
-
-  public static void swap(ArrayList<String> list, String name1, String name2) {
-
-    if ((list.contains(name1) == true) && (list.contains(name2) == true)) {
-
-      int indexOne = list.indexOf(name1);
-      int indexTwo = list.indexOf(name2);
-
-      list.set(indexOne, name2);
-      list.set(indexTwo, name1);
-    }
-  }
-
-  public static void main(String[] args) {
-
-    ArrayList<String> list = new ArrayList();
-
-    print(list);
-
-    list.add("Kate");
-    list.add("Anton");
-    print(list);
-
-    list.add(0, "Svetlana");
-    print(list);
-
-    list.add(2, "Nikolay");
-    print(list);
-
-    list.add(list.size() / 2, "Veronika");
-    print(list);
-
-    list.set(4, "Anastasia");
-    print(list);
-
-    list.remove(3);
-    print(list);
-
-    list.remove("Kate");
-    print(list);
-
-    swap(list, "Anton", "Veronika");
-    print(list);
-    swap(list, "Anton", "Nikolay");
-    print(list);
-    swap(list, "Veronika", "Anton");
-    print(list);
-    swap(list, "Svetlana", "Anastasia");
-    print(list);
-  }
+for (int i = 0; i < list.size(); i++) {
+System.out.print(list.get(i) + " ; ");
 }
+System.out.println();
+}
+
+public static void swap(ArrayList<String> list, String name1, String name2) {
+
+if ((list.contains(name1) == true) && (list.contains(name2) == true)) {
+int indexOne = list.indexOf(name1);
+int indexTwo = list.indexOf(name2);
+list.set(indexOne, name2);
+list.set(indexTwo, name1);
+}
+}
+
+public static void main(String[] args) {
+
+ArrayList<String> list = new ArrayList();
+print(list);
+list.add("Kate");
+list.add("Anton");
+print(list);
+list.add(0, "Svetlana");
+print(list);
+list.add(2, "Nikolay");
+print(list);
+list.add(list.size() / 2, "Veronika");
+print(list);
+list.set(4, "Anastasia");
+print(list);
+list.remove(3);
+print(list);
+list.remove("Kate");
+print(list);
+swap(list, "Anton", "Veronika");
+print(list);
+swap(list, "Anton", "Nikolay");
+print(list);
+swap(list, "Veronika", "Anton");
+print(list);
+swap(list, "Svetlana", "Anastasia");
+print(list);
+}
+}
+
 
 // Task 6
 // Exception
+
 import java.util.*;
-
 public class Main {
-  public static void main(String[] args) {
+public static void main(String[] args) {
       
-      int a = 10;
- 
-
-      int x = 10;
-      int y = 0;
-      
-      try {
-        System.out.
-  }
-      catch(Exception e) {
-        System.out.println("Делить на ноль нельзя!!!");
-      }
-      
-      System.out.println("Продолжаю работу...");
-  }
+int a = 10;
+int x = 10;
+int y = 0;
+try {
+System.out.
+}
+catch(Exception e) {
+System.out.println("Делить на ноль нельзя!!!");
+}
+System.out.println("Продолжаю работу...");
+}
 }
 
+
+// Task 7
 // Exception
-import java.util.*;
-
-public class Main {
-    
-    public static int division(int a, int b) throws ArithmeticException {
-      
-      try {
-        int c = a / b;
-        return c;
-      }
-      catch(ArithmeticException e) {
-        e.printStackTrace();
-        throw new ArithmeticException("Делить на ноль нельзя!!!");
-      }
-    }
-    
-    public static void main(String[] args) {
-      
-      int a = 10;
-      int b = 5;
-      System.out.println(division(a, b));
-      
-      int x = 10;
-      int y = 0;
-      System.out.println(division(x, y));
-      
-      System.out.println(division(15, 3));
-  }
-}
 
 import java.util.*;
-
 public class Main {
-    public static void main(String[] args) {
+pablic static int division(int a, int b) throws ArithmeticException {
       
-      int[] array = new int[5];
-      
-      try {
-        array[0] = 4;
-        array[5] = 7;
-        array[4] = 5 / 0;
-      }
-      catch(ArrayIndexOutOfBoundsException ai) {
-        System.out.println("ArrayIndexOutOfBoundsException!!!");
-      }
-      catch(ArithmeticException ae) {
-        System.out.println("ArithmeticException!!!");
-      }
-      catch(Exception e) {
-        System.out.println("Exception!!!");
-      }
-      
-      
-  }
+try {
+int c = a / b;
+return c;
+}
+catch(ArithmeticException e) {
+e.printStackTrace();
+throw new ArithmeticException("Делить на ноль нельзя!!!");
+}
 }
 
+public static void main(String[] args) {
+      
+int a = 10;
+int b = 5;
+System.out.println(division(a, b));
+      
+int x = 10;
+int y = 0;
+System.out.println(division(x, y));
+System.out.println(division(15, 3));
+}
+}
+
+
+// Task 8
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+      
+int[] array = new int[5];
+try {
+array[0] = 4;
+array[5] = 7;
+array[4] = 5 / 0;
+}
+catch(ArrayIndexOutOfBoundsException ai) {
+System.out.println("ArrayIndexOutOfBoundsException!!!");
+}
+catch(ArithmeticException ae) {
+System.out.println("ArithmeticException!!!");
+}
+catch(Exception e) {
+System.out.println("Exception!!!");
+}
+}
+}
+
+
+// Task 9
 // Stack Trace
 import java.util.*;
-
 public class Main {
+public static void method1() {
 
-  public static void method1() {
-    method2();
-  }
+method2();
+}
 
-  public static void method2() {
-    method3();
-  }
+public static void method2() {
 
-  public static void method3() {
+method3();
+}
 
-    try {
-      System.out.println(10 / 0);
-    } catch (ArithmeticException ex) {
-      ex.printStackTrace();
-    } finally {
-      method4();
-    }
-  }
+public static void method3() {
 
-  public static void method4() {
-    method5();
-  }
+try 
+{
+System.out.println(10 / 0);
+} 
+catch (ArithmeticException ex) {
+ex.printStackTrace();
+} 
+finally {
+method4();
+}
+}
 
-  public static void method5() {
-    System.out.println("Done!");
-  }
+public static void method4() {
+method5();
+}
 
-  public static void main(String[] args) {
+public static void method5() {
 
-    method1();
-  }
+System.out.println("Done!");
+}
+
+public static void main(String[] args) {
+
+method1();
+}
 }
